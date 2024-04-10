@@ -2,49 +2,64 @@ import javax.swing.*;
 import java.awt.*;
 
 class StopwatchGUI {
-    private int padding = 5;
-    private final Font stopwatch_font = Utils.loadCustomFont("fonts/DSEG7Classic-Regular.ttf", 30);
-    public final Color DIGIT_ACTIVE = new Color(204,0,51);
-    public final Color DIGIT_INACTIVE = new Color(80, 9, 23);
-    private final Color DIGIT_BACKGROUND  = new Color(58, 5, 17);
-    private final Color BACKGROUND  = new Color(27,27,27);
+    private final int padding;
+    private final Color FOREGROUND_COLOR;
+    private final Color BACKGROUND_COLOR;
     public StopwatchLabel stopwatchLabel;
     private final StopwatchLabel stopwatchLabelBg;
     public JPanel frontPanel;
     public JPanel backPanel;
     public final JPanel backgroundPanel;
+    private final int width;
+    private final int height;
 
-    public StopwatchGUI(Dimension windowSize) {
-        backgroundPanel = createBackground(windowSize);
+    public StopwatchGUI(int width, int height) {
+        this.width = width;
+        this.height = height;
 
-        stopwatchLabelBg = new StopwatchLabel("00:00:00.000", stopwatch_font, DIGIT_INACTIVE);
-        stopwatchLabel = new StopwatchLabel("", stopwatch_font, DIGIT_ACTIVE);
+        PropertiesManager props = PropertiesManager.getInstance();
+        String defaultText = props.getStr("text.default");
 
-        frontPanel = createFrontPanel(windowSize);
-        backPanel = createBackPanel(windowSize);
+        padding = props.getInt("window.padding");
+
+        Font stopwatch_font = props.getFont("text.font");
+
+        Color digit_active = props.getColor("text.color.active");
+        Color digit_inactive = props.getColor("text.color.inactive");
+
+        BACKGROUND_COLOR = props.getColor("window.color.background");
+        FOREGROUND_COLOR = props.getColor("window.color.foreground");
+
+        backgroundPanel = createBackground();
+
+        stopwatchLabelBg = new StopwatchLabel(defaultText, stopwatch_font, digit_inactive);
+        stopwatchLabel = new StopwatchLabel("", stopwatch_font, digit_active);
+
+        frontPanel = createFrontPanel();
+        backPanel = createBackPanel();
     }
-    private JPanel createBackground(Dimension windowSize){
+    private JPanel createBackground(){
         JPanel background = new JPanel(null,true);
-        background.setBackground(BACKGROUND);
-        background.setBounds(0,0,windowSize.width,windowSize.height);
+        background.setBackground(BACKGROUND_COLOR);
+        background.setBounds(0,0,width,height);
         return background;
     }
-    public JPanel createFrontPanel(Dimension windowSize){
-        int width = windowSize.width - 2 * padding;
-        int height = windowSize.height - 2 * padding;
+    public JPanel createFrontPanel(){
+        int width = this.width - 2 * padding;
+        int height = this.height - 2 * padding;
         JPanel panel = new JPanel();
         panel.setBounds(padding,padding,width,height);
         panel.add(stopwatchLabel);
         panel.setOpaque(false);
         return panel;
     }
-    public JPanel createBackPanel(Dimension windowSize){
-        int width = windowSize.width - 2 * padding;
-        int height = windowSize.height - 2 * padding;
+    public JPanel createBackPanel(){
+        int width = this.width - 2 * padding;
+        int height = this.height - 2 * padding;
         JPanel panel = new JPanel();
         panel.setBounds(padding,padding,width,height);
         panel.add(stopwatchLabelBg);
-        panel.setBackground(DIGIT_BACKGROUND);
+        panel.setBackground(FOREGROUND_COLOR);
         return panel;
     }
 }
