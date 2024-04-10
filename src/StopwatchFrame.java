@@ -2,21 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StopwatchFrame extends JFrame {
-    private final String TITLE = "Stopwatch";
-    private final String ICON_PATH = "/images/icon.png";
-    public StopwatchFrame(Dimension dimension){
+    public StopwatchFrame(int width, int height){
+        PropertiesManager props = PropertiesManager.getInstance();
+        String title = props.getStr("window.title");
+        Image icon = props.getImage("window.icon");
+
         setLayout(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(dimension.width, dimension.height);
+        setSize(width, height);
 
         setLocationRelativeTo(null);
         setLocation(getX(),0);
         setUndecorated(true);
         setAlwaysOnTop(true);
 
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource(ICON_PATH));
         setIconImage(icon);
-        setTitle(TITLE);
+        setTitle(title);
     }
 }
 
