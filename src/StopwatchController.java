@@ -53,14 +53,15 @@ public class StopwatchController{
                         stopwatchTimer.startTimer();
                         running = true;
                     }
-                } else if (keyCode == KeyEvent.VK_ESCAPE){
-                    if (stopwatchTimer.timer == null){
-                        ;
-                    }
-                    else if (!stopwatchTimer.timer.isRunning()){
+                }
+                else if (keyCode == KeyEvent.VK_ESCAPE){
+                    if (stopwatchTimer.timer != null && !stopwatchTimer.timer.isRunning()){
                         stopwatchTimer.resetTimer();
                         running = false;
                     }
+                }
+                else if (keyCode == KeyEvent.VK_BACK_SPACE){
+                    System.exit(0);
                 }
             }
             @Override
