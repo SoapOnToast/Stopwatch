@@ -1,39 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
 
 public class Stopwatch {
-    private final Color BACKGROUND  = new Color(27,27,27);
+    private final Dimension WINDOW_SIZE = new Dimension(250,50);
     public Stopwatch() {
-        StopwatchFrame stopwatchFrame = new StopwatchFrame();
+        StopwatchFrame stopwatchFrame = new StopwatchFrame(WINDOW_SIZE);
+        StopwatchGUI stopwatchGUI = new StopwatchGUI(WINDOW_SIZE);
 
-        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon.png"));
-        stopwatchFrame.setIconImage(icon);
-        stopwatchFrame.setTitle("Stopwatch");
 
-        JPanel background = new JPanel(null,true);
-        background.setBackground(BACKGROUND);
-        background.setBounds(0,0,stopwatchFrame.width,stopwatchFrame.height);
+        stopwatchFrame.add(stopwatchGUI.frontPanel);
+        stopwatchFrame.add(stopwatchGUI.backPanel);
+        stopwatchFrame.add(stopwatchGUI.backgroundPanel);
 
-        StopwatchPanel frontPanel = new StopwatchPanel(stopwatchFrame);
-        StopwatchPanel backPanel = new StopwatchPanel(stopwatchFrame);
-
-        backPanel.setBack();
-        frontPanel.setFront();
-
-        stopwatchFrame.add(frontPanel);
-        stopwatchFrame.add(backPanel);
-        stopwatchFrame.add(background);
         stopwatchFrame.setVisible(true);
 
-        StopwatchTimer stopwatchTimer = new StopwatchTimer(frontPanel.getTimerLabel());
-        StopwatchController stopwatchController = new StopwatchController( stopwatchFrame,stopwatchTimer);
+        StopwatchTimer stopwatchTimer = new StopwatchTimer(stopwatchGUI.stopwatchLabel);
+        new StopwatchController( stopwatchFrame,stopwatchTimer);
     }
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            Stopwatch stopwatchApp = new Stopwatch();
-        });
+        SwingUtilities.invokeLater(Stopwatch::new);
     }
 }
 
