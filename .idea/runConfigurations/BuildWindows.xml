@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="BuildWindows" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value='jpackage --verbose --type msi --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --dest out/dist/windows --resource-dir dist/windows --win-menu --vendor "William Ames"'/>
+    <option name="SCRIPT_TEXT" value="jpackage --verbose --type msi --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --dest out/dist/windows --resource-dir build/windows --win-menu --vendor &quot;William Ames&quot;" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />

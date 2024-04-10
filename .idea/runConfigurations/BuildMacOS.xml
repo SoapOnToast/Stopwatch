@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="BuildMacOS" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="jpackage --verbose --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --dest out/dist/macos --resource-dir dist/macos" />
+    <option name="SCRIPT_TEXT" value="jpackage --verbose --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --dest out/dist/macos --resource-dir build/macos --vendor &quot;William Ames&quot;" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />
