@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-class StopwatchLabel extends JLabel {
+public class StopwatchLabel extends JLabel {
     public StopwatchLabel(String text, Font font, Color color) {
         super(text);
         setFont(font);

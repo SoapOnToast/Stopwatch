@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class StopwatchTimer{
     public Timer timer;
@@ -13,16 +11,14 @@ public class StopwatchTimer{
 
     public void startTimer() {
         startTime = System.currentTimeMillis(); // Get the current time in milliseconds
-        timer = new Timer(10, new ActionListener() { // Update the timer every 10 milliseconds for better accuracy
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                long elapsedTime = System.currentTimeMillis() - startTime; // Calculate the elapsed time
-                long mili = elapsedTime % 1000;
-                int seconds = (int) (elapsedTime / 1000) % 60;
-                int minutes = (int) (elapsedTime / 1000 / 60) % 60;
-                int hours = (int) (elapsedTime / 1000 / 60 / 60) % 60;
-                stopwatchLabel.setText(String.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, mili));
-            }
+        // Update the timer every 10 milliseconds for better accuracy
+        timer = new Timer(10, e -> {
+            long elapsedTime = System.currentTimeMillis() - startTime; // Calculate the elapsed time
+            long millis = elapsedTime % 1000;
+            int seconds = (int) (elapsedTime / 1000) % 60;
+            int minutes = (int) (elapsedTime / 1000 / 60) % 60;
+            int hours = (int) (elapsedTime / 1000 / 60 / 60) % 60;
+            stopwatchLabel.setText(String.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, millis));
         });
         timer.start();
     }
