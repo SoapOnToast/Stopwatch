@@ -1,13 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="BuildMacOS" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="jpackage --verbose --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --dest out/dist/macos --resource-dir dist/macos" />
+  <configuration default="false" name="BuildWindows" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value='jpackage --verbose --type msi --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --dest out/dist/windows --resource-dir dist/windows --win-menu --vendor "William Ames"'/>
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />
     <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
     <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-    <option name="INTERPRETER_PATH" value="/bin/zsh" />
+    <option name="INTERPRETER_PATH" value="cmd.exe" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="EXECUTE_IN_TERMINAL" value="true" />
     <option name="EXECUTE_SCRIPT_FILE" value="false" />

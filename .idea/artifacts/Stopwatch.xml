@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="jpackage" name="Stopwatch">
+    <output-path>$PROJECT_DIR$/out/artifacts/Stopwatch</output-path>
+    <properties id="jpackage-properties">
+      <options>
+        <option name="version" value="" />
+        <option name="copyright" value="" />
+        <option name="description" value="" />
+        <option name="vendor" value="William ames" />
+        <option name="verbose" value="true" />
+        <option name="mainClass" value="Stopwatch" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Stopwatch.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Stopwatch" />
+      </element>
+    </root>
+  </artifact>
+</component>
