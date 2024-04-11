@@ -1,0 +1,1 @@
+jpackage --verbose --input out/artifacts/Stopwatch_jar --main-jar Stopwatch.jar --name Stopwatch --app-version $(cat VERSION) --dest out/dist/macos --resource-dir build/macos --copyright "Copyright (C) William Ames 2024" --vendor "William Ames"
